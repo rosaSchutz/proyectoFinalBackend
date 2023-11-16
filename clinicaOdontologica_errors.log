@@ -1,0 +1,32 @@
+[2023-09-0421:42:02] [ ERROR] [GlobalExceptionHandler:19] detached entity passed to persist: com.dh.clinicaPinerosGarcia.model.Usuario
+[2023-09-0421:55:29] [ ERROR] [GlobalExceptionHandler:19] detached entity passed to persist: com.dh.clinicaPinerosGarcia.model.Odontologo
+[2023-09-0421:58:52] [ ERROR] [GlobalExceptionHandler:19] detached entity passed to persist: com.dh.clinicaPinerosGarcia.model.Odontologo
+[2023-09-0422:04:08] [ ERROR] [GlobalExceptionHandler:19] detached entity passed to persist: com.dh.clinicaPinerosGarcia.model.Odontologo
+[2023-09-0422:04:10] [ ERROR] [GlobalExceptionHandler:19] detached entity passed to persist: com.dh.clinicaPinerosGarcia.model.Odontologo
+[2023-09-0422:33:43] [ ERROR] [GlobalExceptionHandler:19] detached entity passed to persist: com.dh.clinicaPinerosGarcia.model.Odontologo
+[2023-09-0422:35:04] [ ERROR] [GlobalExceptionHandler:19] detached entity passed to persist: com.dh.clinicaPinerosGarcia.model.Odontologo
+[2023-09-0422:35:05] [ ERROR] [GlobalExceptionHandler:19] detached entity passed to persist: com.dh.clinicaPinerosGarcia.model.Odontologo
+[2023-09-0422:36:23] [ ERROR] [GlobalExceptionHandler:19] detached entity passed to persist: com.dh.clinicaPinerosGarcia.model.Odontologo
+[2023-09-0422:36:46] [ ERROR] [GlobalExceptionHandler:19] detached entity passed to persist: com.dh.clinicaPinerosGarcia.model.Odontologo
+[2023-09-0423:10:27] [ ERROR] [GlobalExceptionHandler:19] detached entity passed to persist: com.dh.clinicaPinerosGarcia.model.Odontologo
+[2023-09-0423:30:27] [ ERROR] [GlobalExceptionHandler:19] No serializer found for class org.hibernate.proxy.pojo.bytebuddy.ByteBuddyInterceptor and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) (through reference chain: com.dh.clinicaPinerosGarcia.model.Turno["paciente"]->com.dh.clinicaPinerosGarcia.model.Paciente$HibernateProxy$IlK3pNRw["hibernateLazyInitializer"])
+[2023-09-0423:30:34] [ ERROR] [GlobalExceptionHandler:19] No serializer found for class org.hibernate.proxy.pojo.bytebuddy.ByteBuddyInterceptor and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) (through reference chain: com.dh.clinicaPinerosGarcia.model.Turno["paciente"]->com.dh.clinicaPinerosGarcia.model.Paciente$HibernateProxy$IlK3pNRw["hibernateLazyInitializer"])
+[2023-09-0423:35:13] [ ERROR] [GlobalExceptionHandler:19] not-null property references a null or transient value : com.dh.clinicaPinerosGarcia.model.Turno.odontologo
+[2023-09-0423:35:26] [ ERROR] [GlobalExceptionHandler:19] not-null property references a null or transient value : com.dh.clinicaPinerosGarcia.model.Turno.odontologo
+[2023-09-0423:36:36] [ ERROR] [GlobalExceptionHandler:19] No serializer found for class org.hibernate.proxy.pojo.bytebuddy.ByteBuddyInterceptor and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) (through reference chain: com.dh.clinicaPinerosGarcia.model.Turno["paciente"]->com.dh.clinicaPinerosGarcia.model.Paciente$HibernateProxy$yFHG1p22["hibernateLazyInitializer"])
+[2023-09-0423:45:46] [ ERROR] [GlobalExceptionHandler:19] not-null property references a null or transient value : com.dh.clinicaPinerosGarcia.model.Turno.odontologo
+[2023-09-0602:42:11] [ ERROR] [GlobalExceptionHandler:19] Content-Type 'application/x-www-form-urlencoded;charset=UTF-8' is not supported
+[2023-09-0602:45:00] [ ERROR] [GlobalExceptionHandler:19] Content-Type 'application/x-www-form-urlencoded;charset=UTF-8' is not supported
+[2023-09-0602:46:06] [ ERROR] [GlobalExceptionHandler:19] Content-Type 'application/x-www-form-urlencoded;charset=UTF-8' is not supported
+[2023-09-0602:58:16] [ ERROR] [GlobalExceptionHandler:19] Content-Type 'application/x-www-form-urlencoded;charset=UTF-8' is not supported
+[2023-09-0603:00:03] [ ERROR] [GlobalExceptionHandler:19] Content-Type 'application/x-www-form-urlencoded;charset=UTF-8' is not supported
+[2023-09-0605:12:44] [ ERROR] [GlobalExceptionHandler:19] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "null"
+[2023-09-0605:22:22] [ ERROR] [GlobalExceptionHandler:19] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "NaN"
+[2023-09-0605:27:49] [ ERROR] [GlobalExceptionHandler:19] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "NaN"
+[2023-09-0605:44:54] [ ERROR] [GlobalExceptionHandler:19] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "null"
+[2023-09-0605:46:36] [ ERROR] [GlobalExceptionHandler:19] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "undefined"
+[2023-09-0615:54:24] [ ERROR] [GlobalExceptionHandler:19] Content-Type 'application/x-www-form-urlencoded;charset=UTF-8' is not supported
+[2023-09-0615:59:00] [ ERROR] [GlobalExceptionHandler:19] Content-Type 'application/x-www-form-urlencoded;charset=UTF-8' is not supported
+[2023-09-0616:02:14] [ ERROR] [GlobalExceptionHandler:19] Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "add"
+[2023-09-0616:03:40] [ ERROR] [GlobalExceptionHandler:19] Request method 'PUT' is not supported
+[2023-09-1205:35:39] [ ERROR] [GlobalExceptionHandler:19] Content type 'application/x-www-form-urlencoded;charset=UTF-8' not supported
