@@ -33,10 +33,7 @@ public class PacienteServiceTest {
         pacienteDTO.setFecha_registro(LocalDate.parse("2023-09-13"));
 
         Domicilio domicilio = new Domicilio();
-        domicilio.setCalle("Av Santa fe");
-        domicilio.setNumero("444");
-        domicilio.setLocalidad("CABA");
-        domicilio.setProvincia("Buenos Aires");
+        domicilio.setDomicilio("Av Santa fe");
         pacienteDTO.setDomicilio(domicilio);
 
         //Creando paciente Dos
@@ -47,10 +44,7 @@ public class PacienteServiceTest {
         pacienteDosDTO.setFecha_registro(LocalDate.parse("2023-09-13"));
 
         Domicilio domicilioDos = new Domicilio();
-        domicilioDos.setCalle("Av Avellaneda");
-        domicilioDos.setNumero("333");
-        domicilioDos.setLocalidad("CABA");
-        domicilioDos.setProvincia("Buenos Aires");
+        domicilioDos.setDomicilio("Av Avellaneda");
         pacienteDosDTO.setDomicilio(domicilioDos);
 
         //Llamando al servicio crear paciente

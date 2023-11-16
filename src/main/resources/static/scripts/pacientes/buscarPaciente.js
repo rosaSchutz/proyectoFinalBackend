@@ -34,22 +34,57 @@ async function consultarPaciente(url) {
 function renderizarPaciente(paciente) {
   // Acceder a los campos del domicilio
   const domicilio = paciente.domicilio;
-  const calle = domicilio.calle;
-  const numero = domicilio.numero;
-  const localidad = domicilio.localidad;
-  const provincia = domicilio.provincia;
-
+  const direccion = domicilio.domicilio;
   const template = `
-    <tr>
-      <td>${paciente.nombre}</td>
-      <td>${paciente.apellido}</td>
-      <td>${paciente.dni}</td>
-      <td>${paciente.fecha_registro}</td>
-      <td>${calle}, ${numero}, ${localidad}, ${provincia}</td>
-    </tr>
+    <li class="px-2 m-0 border border-gray-200 rounded-sm">
+    <div class="flex items-center space-x-4">
+        <div class="flex-1 min-w-0">
+            <div class="flex flex-row gap-2">
+                <p class="text-sm text-gray-700 truncate">
+                    Fecha de registro:
+                </p>
+                <p class="text-sm font-medium text-gray-900 truncate">
+                    ${paciente.fecha_registro}
+                </p>
+            </div>
+            <div class="flex flex-row gap-2">
+                <p class="text-sm text-gray-700 truncate">
+                    Paciente №:
+                </p>
+                <p class="text-sm font-medium text-gray-900 truncate">
+                    ${paciente.id}
+                </p>
+            </div>
+            <div class="flex flex-row gap-2">
+                <p class="text-sm text-gray-700 truncate">
+                    Nombre Completo:
+                </p>
+                <p class="text-sm font-medium text-gray-900 truncate">
+                    ${paciente.nombre} ${paciente.apellido}
+                </p>
+            </div>
+            <div class="flex flex-row gap-2">
+                <p class="text-sm text-gray-700 truncate">
+                    DNI:
+                </p>
+                <p class="text-sm font-medium text-gray-900 truncate">
+                    ${paciente.dni}
+                </p>
+            </div>
+            <div class="flex flex-row gap-2">
+                <p class="text-sm text-gray-700 truncate">
+                    Direccción:
+                </p>
+                <p class="text-sm font-medium text-gray-900 truncate">
+                    ${direccion}
+                </p>
+            </div>
+        </div>
+    </div>
+    </li>
   `;
 
-  const tbody = document.getElementById('campos-pacientes');
+  const tbody = document.getElementById('campos-pacientesDni');
   tbody.innerHTML = template;
 }
 
@@ -65,8 +100,8 @@ function mostrarError(mensaje) {
 // Manejo del evento de clic en el botón "Buscar"
 document.addEventListener('DOMContentLoaded', function () {
   const urlBase = 'http://localhost:8080/pacientes/';
-  const buscarButton = document.getElementById('buscarPaciente');
-  const pacienteIdInput = document.getElementById('pacienteId');
+  const buscarButton = document.getElementById('buscarPacienteDni');
+  const pacienteIdInput = document.getElementById('pacienteIdDni');
 
   buscarButton.addEventListener('click', function () {
     const id = pacienteIdInput.value;

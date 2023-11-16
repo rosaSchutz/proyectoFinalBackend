@@ -1,5 +1,6 @@
 package com.dh.clinicaPinerosGarcia.controller;
 
+import com.dh.clinicaPinerosGarcia.ResourceNotFoundException;
 import com.dh.clinicaPinerosGarcia.model.OdontologoDTO;
 import com.dh.clinicaPinerosGarcia.service.IOdontologoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +26,18 @@ public class OdontologoController {
     public OdontologoDTO getOdontologo(@PathVariable Integer id){
         return odontologoService.readOdontologo(id);
     }
+
+    @GetMapping("/buscarMatricula/{matricula}")
+    public OdontologoDTO getMatriculaOdontologo(@PathVariable String matricula) throws ResourceNotFoundException {
+        return odontologoService.readMatriculaOdontologo(matricula);
+    }
+
     @PutMapping("/update")
     public ResponseEntity<?> modifyOdontologo(@RequestBody OdontologoDTO odontologoDTO) {
         odontologoService.updateOdontologo(odontologoDTO);
         return ResponseEntity.ok(HttpStatus.OK);
     }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?> removeOdontologo(@PathVariable Integer id) {
 

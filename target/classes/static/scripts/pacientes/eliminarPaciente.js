@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Definición de las URL de la API y obtención de la referencia a la tabla en el HTML.
   const apiUrl = 'http://localhost:8080/pacientes/';
   const urlConsultarPacientes = `${apiUrl}getAll`;
-  const tbody = document.getElementById('campos-pacientes');
+  const tbody = document.getElementById('campos-pacientesEliminar');
 
   // Función principal para consultar y mostrar la lista de pacientes.
   async function consultarPacientes() {
@@ -42,19 +42,64 @@ document.addEventListener('DOMContentLoaded', function () {
     let template = '';
     pacientes.forEach(paciente => {
       const domicilio = paciente.domicilio;
-      const { calle, numero, localidad, provincia } = domicilio;
+      const direccion = domicilio.domicilio;
       // Se construye una fila de la tabla para cada paciente.
       template += `
-        <tr>
-          <td id="id-paciente">${paciente.id}</td>
-          <td>${paciente.nombre}</td>
-          <td>${paciente.apellido}</td>
-          <td>${paciente.dni}</td>
-          <td>${paciente.fecha_registro}</td>
-          <td>${calle}, ${numero}, ${localidad}, ${provincia}</td>
-          <td><button style="border: none;" class="borrar" data-id="${paciente.id}"><i class="fa-solid fa-trash"></i></button></td>
-        </tr>
-      `;
+      <li class="px-2 py-3 m-0 border border-gray-200 rounded-sm">
+      <div class="flex items-center space-x-4">
+          <div class="flex-shrink-0 hidden sm:block">
+              <img class="w-8 h-8 rounded-full" src="./assets/undraw_pic_profile_re_7g2h.svg" alt="profile image">
+          </div>
+          <div class="flex-1 min-w-0">
+              <div class="flex flex-row gap-2">
+                  <p class="text-sm text-gray-700 truncate">
+                      Fecha de registro:
+                  </p>
+                  <p class="text-sm font-medium text-gray-900 truncate">
+                      ${paciente.fecha_registro}
+                  </p>
+              </div>
+              <div class="flex flex-row gap-2">
+                  <p class="text-sm text-gray-700 truncate">
+                      Paciente №:
+                  </p>
+                  <p class="text-sm font-medium text-gray-900 truncate">
+                      ${paciente.id}
+                  </p>
+              </div>
+              <div class="flex flex-row gap-2">
+                  <p class="text-sm text-gray-700 truncate">
+                      Nombre Completo:
+                  </p>
+                  <p class="text-sm font-medium text-gray-900 truncate">
+                      ${paciente.nombre} ${paciente.apellido}
+                  </p>
+              </div>
+              <div class="flex flex-row gap-2">
+                  <p class="text-sm text-gray-700 truncate">
+                      DNI:
+                  </p>
+                  <p class="text-sm font-medium text-gray-900 truncate">
+                      ${paciente.dni}
+                  </p>
+              </div>
+              <div class="flex flex-row gap-2">
+                  <p class="text-sm text-gray-700 truncate">
+                      Direccción:
+                  </p>
+                  <p class="text-sm font-medium text-gray-900 truncate">
+                      ${direccion}
+                  </p>
+              </div>
+          </div>
+          <div>
+              <button class="borrar border-none" data-id="${paciente.id}" aria-label="trash" aria>
+                <i class="fa-solid fa-trash"></i>
+              </button>
+          </div>
+      </div>
+      </li>
+      `
     });
     // Se actualiza el contenido de la tabla con la lista de pacientes renderizada.
     tbody.innerHTML = template;
@@ -125,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Función para eliminar la fila de la tabla correspondiente al paciente eliminado.
   function eliminarFilaDeTabla(event) {
-    const rowToDelete = event.target.closest('tr');
+    const rowToDelete = event.target.closest('li');
     rowToDelete.remove();
   }
 

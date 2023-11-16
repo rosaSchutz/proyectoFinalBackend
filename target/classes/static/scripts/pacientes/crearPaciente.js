@@ -1,29 +1,27 @@
 document.addEventListener('DOMContentLoaded', function () {
   const url = 'http://localhost:8080/pacientes/add';
   const formulario = document.getElementById('crearPacienteForm');
+  const botonCrearPaciente = document.getElementById('botonCrearPaciente');
 
   //Manejo de la fecha
-  const fechaInput = document.getElementById('inputFechaRegistro');
+  const fechaInput = document.getElementById('inputFechaRegistroCrear');
   const fechaActual = new Date();
   const fechaActualFormat = fechaActual.toISOString().split('T')[0]; // Obtenemos la fecha en formato YYYY-MM-DD
   fechaInput.value = fechaActualFormat;
 
-  formulario.addEventListener('submit', async function (event) {
+  botonCrearPaciente.addEventListener('click', async function (event) {
     event.preventDefault();
-
+  //formulario.addEventListener('submit', async function (event) {
     // Obtener los valores del formulario
-    const nombre = document.getElementById('inputNombre').value;
-    const apellido = document.getElementById('inputApellido').value;
-    const dni = document.getElementById('inputDni').value;
-    const calle = document.getElementById('calleDomicilio').value;
-    const numero = document.getElementById('numeroDomicilio').value;
-    const localidad = document.getElementById('localidadDomicilio').value;
-    const provincia = document.getElementById('provinciaDomicilio').value;
+    const nombre = document.getElementById('inputNombreCrear').value;
+    const apellido = document.getElementById('inputApellidoCrear').value;
+    const dni = document.getElementById('inputDniCrear').value;
+    const domicilio = document.getElementById('inputDireccionCrear').value;
     //const username = document.getElementById('username').value;
     //const password = document.getElementById('password').value;
 
     // Validación de campos vacios
-    if (!nombre || !apellido || !dni || !calle || !numero || !localidad || !provincia) {
+    if (!nombre || !apellido || !dni || !domicilio) {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -39,10 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
       dni,
       fecha_registro: fechaActualFormat,
       domicilio: {
-        calle,
-        numero,
-        localidad,
-        provincia,
+        domicilio,
       },
       /*
       usuario: {
@@ -90,4 +85,5 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+
 

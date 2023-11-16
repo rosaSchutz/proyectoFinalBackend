@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Definición de las URL de la API y obtención de la referencia a la tabla en el HTML.
   const apiUrl = 'http://localhost:8080/odontologos/';
   const urlConsultarOdontologos = `${apiUrl}getAll`;
-  const tbody = document.getElementById('campos-odontologos');
+  const tbody = document.getElementById('campos-odontologosEliminar');
 
   // Función principal para consultar y mostrar la lista de pacientes.
   async function consultarOdontologo() {
@@ -33,25 +33,56 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!response.ok) {
       throw new Error(`Error de HTTP: ${response.status}`);
     }
-    // Se parsea la respuesta como JSON y se retorna la lista de pacientes.
+    // Se parsea la respuesta como JSON y se retorna la lista de odontologos.
     return await response.json();
   }
 
-  // Función para renderizar la lista de pacientes en la tabla HTML.
+  // Función para renderizar la lista de odontologos en la tabla HTML.
   function renderizarOdontologos(odontologos) {
     let template = '';
     odontologos.forEach(odontologo => {
       
-      // Se construye una fila de la tabla para cada paciente.
-      template += `
-        <tr>
-          <td id="id-odontologo">${odontologo.id}</td>
-          <td>${odontologo.nombre}</td>
-          <td>${odontologo.apellido}</td>
-          <td>${odontologo.matricula}</td>
-          <td><button style="border: none;" class="borrar" data-id="${odontologo.id}"><i class="fa-solid fa-trash"></i></button></td>
-        </tr>
-      `;
+      // Se construye una fila de la tabla para cada odontologo.
+    template += `
+    <li class="px-2 py-3 m-0 border border-gray-200 rounded-sm">
+    <div class="flex items-center space-x-4">
+        <div class="flex-shrink-0 hidden sm:block">
+            <img class="w-8 h-8 rounded-full" src="./assets/undraw_pic_profile_re_7g2h.svg" alt="profile image">
+        </div>
+        <div class="flex-1 min-w-0">
+            <div class="flex flex-row gap-2">
+                <p class="text-sm text-gray-700 truncate">
+                  Odontologo №:
+                </p>
+                <p class="text-sm font-medium text-gray-900 truncate">
+                    ${odontologo.id}
+                </p>
+            </div>
+            <div class="flex flex-row gap-2">
+                <p class="text-sm text-gray-700 truncate">
+                    Nombre Completo:
+                </p>
+                <p class="text-sm font-medium text-gray-900 truncate">
+                    ${odontologo.nombre} ${odontologo.apellido}
+                </p>
+            </div>
+            <div class="flex flex-row gap-2">
+                <p class="text-sm text-gray-700 truncate">
+                  Matricula:
+                </p>
+                <p class="text-sm font-medium text-gray-900 truncate">
+                    ${odontologo.matricula}
+                </p>
+            </div>
+        </div>
+        <div>
+            <button class="borrar border-none" data-id="${odontologo.id}" aria-label="trash" aria>
+              <i class="fa-solid fa-trash"></i>
+            </button>
+        </div>
+    </div>
+    </li>
+    `;
     });
     // Se actualiza el contenido de la tabla con la lista de pacientes renderizada.
     tbody.innerHTML = template;
@@ -122,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Función para eliminar la fila de la tabla correspondiente al paciente eliminado.
   function eliminarFilaDeTabla(event) {
-    const rowToDelete = event.target.closest('tr');
+    const rowToDelete = event.target.closest('li');
     rowToDelete.remove();
   }
 

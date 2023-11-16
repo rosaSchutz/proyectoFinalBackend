@@ -1,17 +1,17 @@
 document.addEventListener('DOMContentLoaded', function () {
   const url = 'http://localhost:8080/odontologos/add';
   const formulario = document.getElementById('crearOdontologoForm');
-
+  const botonCrearOdontologo = document.getElementById('botonCrearOdontologo');
  
   
 
-  formulario.addEventListener('submit', async function (event) {
+  botonCrearOdontologo.addEventListener('click', async function (event) {
     event.preventDefault();
 
     // Obtener los valores del formulario
-    const nombre = document.getElementById('inputNombre').value;
-    const apellido = document.getElementById('inputApellido').value;
-    const matricula = document.getElementById('inputMatricula').value;
+    const nombre = document.getElementById('inputNombreCrear').value;
+    const apellido = document.getElementById('inputApellidoCrear').value;
+    const matricula = document.getElementById('inputMatriculaCrear').value;
     //const username = document.getElementById('username').value;
     //const password = document.getElementById('password').value;
 

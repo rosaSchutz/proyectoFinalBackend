@@ -2,10 +2,7 @@ package com.dh.clinicaPinerosGarcia.model;
 
 public class DomicilioDTO {
     private Integer id;
-    private String calle;
-    private String numero;
-    private String localidad;
-    private String provincia;
+    private String domicilio;
 
     public Integer getId() {
         return id;
@@ -15,35 +12,11 @@ public class DomicilioDTO {
         this.id = id;
     }
 
-    public String getCalle() {
-        return calle;
+    public String getDomicilio() {
+        return domicilio;
     }
 
-    public void setCalle(String calle) {
-        this.calle = calle;
-    }
-
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public String getLocalidad() {
-        return localidad;
-    }
-
-    public void setLocalidad(String localidad) {
-        this.localidad = localidad;
-    }
-
-    public String getProvincia() {
-        return provincia;
-    }
-
-    public void setProvincia(String provincia) {
-        this.provincia = provincia;
+    public void setDomicilio(String domicilio) {
+        this.domicilio = domicilio;
     }
 }

@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Definición de las URL de la API y obtención de la referencia a la tabla en el HTML.
   const apiUrl = 'http://localhost:8080/turnos/';
   const urlConsultarTurnos = `${apiUrl}getAll`;
-  const tbody = document.getElementById('campos-turnos');
+  const tbody = document.getElementById('campos-turnosEliminar');
 
   // Función principal para consultar y mostrar la lista de turnos.
   async function consultarTurnos() {
@@ -43,21 +43,73 @@ document.addEventListener('DOMContentLoaded', function () {
     turnos.forEach(turno => {
       // Acceder a los campos del odontologo
       const odontologo = turno.odontologo;
+      const idO = odontologo.id;
       const nombreOdontologo = odontologo.nombre;
       const apellidoOdontologo = odontologo.apellido;
       // Acceder a los campos del paciente
       const paciente = turno.paciente;
+      const idP = paciente.id;
       const nombrePaciente = paciente.nombre;
       const apellidoPaciente = paciente.apellido;
+
       template += `
-        <tr>
-          <td>${turno.id}</td>
-          <td>${nombrePaciente} ${apellidoPaciente}</td>
-          <td>${nombreOdontologo} ${apellidoOdontologo}</td>
-          <td>${turno.fechaTurno}</td>
-          <td><button style="border: none;" class="borrar" data-id="${turno.id}"><i class="fa-solid fa-trash"></i></button></td>
-        </tr>
-      `;
+    <li class="px-2 py-3 m-0 border border-gray-200 rounded-sm">
+    <div class="flex items-center space-x-4">
+        <div class="flex-shrink-0 hidden sm:block">
+            <img class="w-8 h-8 rounded-full" src="./assets/undraw_pic_profile_re_7g2h.svg" alt="profile image">
+        </div>
+        <div class="flex-1 min-w-0">
+            <div class="flex flex-row gap-2">
+                <p class="text-sm text-gray-700 truncate">
+                  Turno №:
+                </p>
+                <p class="text-sm font-medium text-gray-900 truncate">
+                    ${turno.id}
+                </p>
+            </div>
+            <div class="flex flex-row gap-2">
+                <p class="text-sm text-gray-700 truncate">
+                    Datos paciente:
+                </p>
+                <p class="text-sm font-medium text-gray-900 truncate">
+                  número paciente:${idP} nombres y apellidos:${nombrePaciente} ${apellidoPaciente}
+                </p>
+            </div>
+            <div class="flex flex-row gap-2">
+            <p class="text-sm text-gray-700 truncate">
+                Datos odontologo:
+            </p>
+            <p class="text-sm font-medium text-gray-900 truncate">
+                  número odontologo:${idO} nombres y apellidos:${nombreOdontologo} ${apellidoOdontologo}
+            </p>
+        </div>
+            <div class="flex flex-row gap-2">
+                <p class="text-sm text-gray-700 truncate">
+                  Fecha turno:
+                </p>
+                <p class="text-sm font-medium text-gray-900 truncate">
+                    ${turno.fechaTurno}
+                </p>
+            </div>
+            <div class="flex flex-row gap-2">
+            <p class="text-sm text-gray-700 truncate">
+              Fecha turno:
+            </p>
+            <p class="text-sm font-medium text-gray-900 truncate">
+                ${turno.horaTurno}
+            </p>
+        </div>
+        </div>
+        <div>
+            <button class="borrar border-none" data-id="${turno.id}" aria-label="trash" aria>
+              <i class="fa-solid fa-trash"></i>
+            </button>
+        </div>
+    </div>
+    </li>
+    `;
+
+
     });
     tbody.innerHTML = template;
   }
@@ -127,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Función para eliminar la fila de la tabla correspondiente al turno eliminado.
   function eliminarFilaDeTabla(event) {
-    const rowToDelete = event.target.closest('tr');
+    const rowToDelete = event.target.closest('li');
     rowToDelete.remove();
   }
 

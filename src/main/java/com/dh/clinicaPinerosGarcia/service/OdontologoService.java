@@ -1,5 +1,6 @@
 package com.dh.clinicaPinerosGarcia.service;
 
+import com.dh.clinicaPinerosGarcia.ResourceNotFoundException;
 import com.dh.clinicaPinerosGarcia.model.Odontologo;
 import com.dh.clinicaPinerosGarcia.model.OdontologoDTO;
 import com.dh.clinicaPinerosGarcia.repository.IOdontologoRepository;
@@ -36,6 +37,16 @@ public class OdontologoService implements IOdontologoService{
     @Override
     public OdontologoDTO readOdontologo(Integer id) {
         Optional<Odontologo> odontologo = repository.findById(id);
+        OdontologoDTO odontologoDTO = null;
+        if(odontologo.isPresent())
+            odontologoDTO = mapper.convertValue(odontologo, OdontologoDTO.class);
+        return odontologoDTO;
+    }
+
+    //Buscar odontologo por su matricula
+    @Override
+    public OdontologoDTO readMatriculaOdontologo(String matricula) throws ResourceNotFoundException {
+        Optional<Odontologo> odontologo = repository.findOdontologoByMatricula(matricula);
         OdontologoDTO odontologoDTO = null;
         if(odontologo.isPresent())
             odontologoDTO = mapper.convertValue(odontologo, OdontologoDTO.class);

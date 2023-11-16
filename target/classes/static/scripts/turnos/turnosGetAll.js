@@ -1,6 +1,7 @@
+/*
 document.addEventListener('DOMContentLoaded', function () {
   const url = 'http://localhost:8080/turnos/getAll';
-  const tbody = document.getElementById('campos-turnos');
+  const tbody = document.getElementById('campos-turnosGetAll');
 
   // Configuración para las solicitudes fetch
   const settings = {
@@ -41,16 +42,37 @@ document.addEventListener('DOMContentLoaded', function () {
       const nombrePaciente = paciente.nombre;
       const apellidoPaciente = paciente.apellido;
       template += `
-        <tr>
-          <td>${turno.id}</td>
-          <td>${registroPaciente}</td>
-          <td>${nombrePaciente} ${apellidoPaciente}</td>
-          <td>${registroOdontologo}</td>
-          <td>${nombreOdontologo} ${apellidoOdontologo}</td>
-          <td>${turno.fechaTurno}</td>
-          <td>${turno.horaTurno}</td>
-        </tr>
-      `;
+      <tr>
+        <td
+            class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap text-center"
+            id="id-paciente">
+            <h2 class="font-normal text-gray-800 dark:text-gray-700">
+            ${turno.id}</h2>
+        </td>
+        <td
+        class="px-12 py-4 text-sm font-normal text-gray-700 whitespace-nowrap text-center">
+        ${registroPaciente}
+        </td>
+        <td
+            class="px-12 py-4 text-sm font-normal text-gray-700 whitespace-nowrap text-center">
+            ${nombrePaciente} ${apellidoPaciente}
+        </td>
+        <td
+        class="px-12 py-4 text-sm font-normal text-gray-700 whitespace-nowrap text-center">
+        ${registroOdontologo}
+        </td>
+        <td
+            class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap text-center">
+            ${nombreOdontologo} ${apellidoOdontologo}</td>
+        <td
+            class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap text-center">
+            ${turno.fechaTurno}</td>
+        <td
+            class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap text-center">
+            ${turno.horaTurno}
+        </td>
+      </tr>
+    `;
     });
     tbody.innerHTML = template;
   }
@@ -67,3 +89,4 @@ document.addEventListener('DOMContentLoaded', function () {
   // Evento de carga para consultar turnos
   consultarTurnos(url, settings);
 });
+*/

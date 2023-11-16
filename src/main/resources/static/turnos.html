@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Backend java spring boot | Proyecto con fines didácticos |" />
+    <meta name="keywords" content="Proyecto, didácticos" />
+    <title>Clinica Odontologica</title>
+    <link rel="icon" type="image/x-icon" href="./assets/Diente.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <!-- Sweet Alert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body class="bg-gray-100">
+    <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-4 bg-white shadow hidden md:block"
+        aria-label="Sidebar">
+        <section class="h-full px-3 pb-4 overflow-y-auto flex flex-col justify-between">
+            <article>
+                <a href="#" class="flex items-center pl-2.5 mb-5">
+                    <img src="./assets/Diente.png" class="h-6 mr-3 sm:h-7" alt="Clinica Logo" />
+                    <span class="self-center text-base font-normal whitespace-nowrap">Clinica
+                        Odontologica</span>
+                </a>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="pacientes.html" aria-label="redireccion a pacientes" aria
+                            class="flex items-center px-3 py-2 text-gray-600 rounded-lg hover:bg-gray-100 hover:text-gray-700">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+                            </svg>
+                            <span class="ml-3 text-sm font-medium">Pacientes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="odontologos.html" aria-label="redireccion a odontologos" aria
+                            class="flex items-center px-3 py-2 text-gray-600 rounded-lg hover:bg-gray-100 hover:text-gray-700">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="icon icon-tabler icon-tabler-stethoscope w-5 h-5" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M6 4h-1a2 2 0 0 0 -2 2v3.5h0a5.5 5.5 0 0 0 11 0v-3.5a2 2 0 0 0 -2 -2h-1">
+                                </path>
+                                <path d="M8 15a6 6 0 1 0 12 0v-3"></path>
+                                <path d="M11 3v2"></path>
+                                <path d="M6 3v2"></path>
+                                <path d="M20 10m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                            </svg>
+                            <span class="ml-3 text-sm font-medium">Odontologos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="turnos.html" aria-label="redireccion a turnos" aria
+                            class="flex items-center px-3 py-2 text-gray-600 rounded-lg hover:bg-gray-100 hover:text-gray-700">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="icon icon-tabler icon-tabler-calendar-plus w-5 h-5" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M12.5 21h-6.5a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v5"></path>
+                                <path d="M16 3v4"></path>
+                                <path d="M8 3v4"></path>
+                                <path d="M4 11h16"></path>
+                                <path d="M16 19h6"></path>
+                                <path d="M19 16v6"></path>
+                            </svg>
+                            <span class="ml-3 text-sm font-medium">Turnos</span>
+                        </a>
+                    </li>
+                </ul>
+            </article>
+            <ul>
+                <li>
+                    <article class="flex items-center justify-between hover:bg-gray-100 py-2 px-1 rounded-lg">
+                        <span class="flex-1 ml-3 whitespace-nowrap">
+                            <a href="#" class="flex items-center gap-x-2 text-gray-600">
+                                <img class="object-cover w-8 h-8 rounded-full"
+                                    src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=4&w=880&h=880&q=100"
+                                    alt="avatar" />
+                                <span class="text-sm font-normal text-gray-600">John Doe</span>
+                            </a>
+                        </span>
+                        <a href="#" aria-label="Sign off" aria>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout w-5 h-5"
+                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path
+                                    d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2">
+                                </path>
+                                <path d="M9 12h12l-3 -3"></path>
+                                <path d="M18 15l3 -3"></path>
+                            </svg>
+                        </a>
+                    </article>
+                </li>
+            </ul>
+        </section>
+    </aside>
+
+    <aside
+        class="visible md:hidden flex flex-col items-center min-w-[4rem] h-screen py-8 overflow-y-auto bg-white shadow fixed top-0 left-0 z-40">
+        <nav class="flex flex-col flex-1 space-y-6">
+            <a href="#">
+                <img class="w-auto h-6 m-auto" src="./assets/Diente.png" alt="logo" />
+            </a>
+
+            <a href="pacientes.html" aria-label="redireccion a pacientes" aria
+                class="p-1.5 text-gray-700 focus:outline-nones rounded-lg hover:bg-gray-100">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+                </svg>
+            </a>
+
+            <a href="odontologos.html" aria-label="redireccion a odontologos" aria
+                class="p-1.5 text-gray-700 focus:outline-nones rounded-lg hover:bg-gray-100">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-stethoscope w-5 h-5"
+                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M6 4h-1a2 2 0 0 0 -2 2v3.5h0a5.5 5.5 0 0 0 11 0v-3.5a2 2 0 0 0 -2 -2h-1"></path>
+                    <path d="M8 15a6 6 0 1 0 12 0v-3"></path>
+                    <path d="M11 3v2"></path>
+                    <path d="M6 3v2"></path>
+                    <path d="M20 10m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+                </svg>
+            </a>
+
+            <a href="turnos.html" aria-label="redireccion a turnos" aria
+                class="p-1.5 text-gray-700 focus:outline-nones rounded-lg hover:bg-gray-100">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-plus w-5 h-5"
+                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M12.5 21h-6.5a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v5"></path>
+                    <path d="M16 3v4"></path>
+                    <path d="M8 3v4"></path>
+                    <path d="M4 11h16"></path>
+                    <path d="M16 19h6"></path>
+                    <path d="M19 16v6"></path>
+                </svg>
+            </a>
+        </nav>
+
+        <article class="flex flex-col space-y-6">
+            <a href="#" aria-label="Sign off" aria
+                class="p-1.5 text-gray-900 focus:outline-nones rounded-lg bg-gray-100 hover:bg-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout" width="24"
+                    height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2">
+                    </path>
+                    <path d="M9 12h12l-3 -3"></path>
+                    <path d="M18 15l3 -3"></path>
+                </svg>
+            </a>
+
+            <a href="#">
+                <img class="object-cover w-8 h-8 rounded-full"
+                    src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=4&w=880&h=880&q=100"
+                    alt="avatar" />
+            </a>
+        </article>
+    </aside>
+
+    <main class="p-2 md:p-4 ml-16 md:ml-64 flex flex-col items-center justify-center h-screen">
+        <section class="container py-5 px-3 bg-white shadow rounded-lg min-w-sm md:w-11/12">
+            <article>
+                <!-- Cabezera tabla-->
+                <div class="flex flex-col lg:flex-row items-center justify-between mb-2">
+                    <h2 class="text-lg font-semibold text-gray-700 my-4 text-center">
+                        Administrar Turnos
+                    </h2>
+                    <div class="flex flex-col gap-3 lg:flex-row lg:gap-0">
+                        <!-- Button trigger modal -->
+                        <button type="button"
+                            class="btn text-sm font-normal px-8 py-2.5 text-white bg-gray-800 rounded-md hover:outline-none hover:bg-gray-800 hover:underline"
+                            data-bs-toggle="modal" data-bs-target="#agregarTurno">
+                            Agregar
+                        </button>
+                        <!-- Button trigger modal -->
+                        <button type="button"
+                            class="btn text-sm font-normal px-8 py-2.5 text-white bg-gray-800 rounded-md hover:outline-none hover:bg-gray-800 hover:underline"
+                            data-bs-toggle="modal" data-bs-target="#actualizarTurno">
+                            Actualizar
+                        </button>
+                        <!-- Button trigger modal -->
+                        <button type="button"
+                            class="btn text-sm font-normal px-8 py-2.5 text-white bg-gray-800 rounded-md hover:outline-none hover:bg-gray-800 hover:underline"
+                            data-bs-toggle="modal" data-bs-target="#buscarTurno">
+                            Buscar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Modal Crear-->
+                <section>
+                    <div class="modal fade" id="agregarTurno" tabindex="-1" aria-labelledby="agregarTurno"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header flex flex-row items-center justify-between">
+                                    <h1 class="modal-title fs-5" id="agregarTurnoLabel">
+                                        Agregar Turno
+                                    </h1>
+                                    <button type="button" class="btn-close flex items-center text-gray-900"
+                                        data-bs-dismiss="modal" aria-label="Close">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="crearTurnoForm" action="http://localhost:8080/turnos/add" method="POST">
+                                        <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+                                            <div>
+                                                <h4>Datos a diligenciar:</h4>
+                                            </div>
+                                            <div></div>
+                                            <div>
+                                                <label for="inputFechaCrear"
+                                                    class="text-sm font-normal leading-6 text-gray-700">Elije
+                                                    la fecha de tu cita</label>
+                                                <input id="inputFechaCrear" type="date" required
+                                                    class="block font-light w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-white dark:border-gray-200 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+                                                    placeholder="fecha" aria-label="fecha" aria />
+                                            </div>
+                                            <div>
+                                                <label for="inputHoraCrear"
+                                                    class="text-sm font-normal leading-6 text-gray-700">
+                                                    Hora
+                                                </label>
+                                                <input id="inputHoraCrear" type="time" required min="09:00" max="18:00"
+                                                    class="block font-light w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-white dark:border-gray-200 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+                                                    placeholder="hora" aria-label="hora" aria />
+                                            </div>
+                                            <div>
+                                                <label for="idPacienteCrear"
+                                                    class="text-sm font-normal leading-6 text-gray-700">
+                                                    id Paciente
+                                                </label>
+                                                <input id="idPacienteCrear" type="text" required
+                                                    class="block font-light w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-white dark:border-gray-200 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+                                                    placeholder="# registro paciente" aria-label="registro paciente"
+                                                    aria />
+                                            </div>
+                                            <div>
+                                                <label for="idOdontologoCrear"
+                                                    class="text-sm font-normal leading-6 text-gray-700">
+                                                    id Odontologo
+                                                </label>
+                                                <input id="idOdontologoCrear" type="text" required
+                                                    class="block font-light w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-white dark:border-gray-200 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+                                                    placeholder="# registro odontologo" aria-label="registro odontologo"
+                                                    aria />
+                                            </div>
+
+                                        </div>
+
+                                        <div class="modal-footer flex justify-center mt-6">
+                                            <button type="button" data-bs-dismiss="modal" aria-label="cerrar" aria
+                                                class="btn text-sm font-normal px-8 py-2.5 leading-5 rounded-md bg-white border-gray-800 text-gray-900 hover:bg-white hover:border-gray-800 hover:underline">
+                                                Cancelar
+                                            </button>
+
+                                            <button type="button" id="botonCrearTurno" aria-label="agregar odontologo"
+                                                aria
+                                                class="btn text-sm font-normal px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-800 rounded-md hover:outline-none hover:bg-gray-800 hover:underline">
+                                                crear turno
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Modal Actualizar-->
+                <section>
+                    <div class="modal fade" id="actualizarTurno" tabindex="-1" aria-labelledby="actualizarTurno"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header flex flex-row items-center justify-between">
+                                    <h1 class="modal-title fs-5" id="actualizarTurnoLabel">
+                                        Actualizar Turno
+                                    </h1>
+                                    <button type="button" class="btn-close flex items-center text-gray-900"
+                                        data-bs-dismiss="modal" aria-label="Close">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2 items-end">
+                                        <div>
+                                            <label class="text-rose-600 text-sm" for="odontologoIdActualizar">Digita el
+                                                número del turno:</label>
+                                            <input type="text" id="turnoIdActualizar"
+                                                class="block font-light w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-white dark:border-gray-200 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+                                                placeholder="número turno" aria-label="id" aria />
+                                        </div>
+                                        <div>
+                                            <button id="buscarTurnoActualizar" aria-label="buscar" aria
+                                                class="block font-normal w-full px-4 py-2 mt-2 text-gray-700 transition-colors duration-300 transform bg-gray-200 border rounded-md hover:underline focus:outline-none">
+                                                Buscar
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <form class="border-t border-gray-200 mt-4" id="actualizarTurnoForm"
+                                        action="http://localhost:8080/turnos/update" method="POST">
+                                        <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+                                            <div>
+                                                <h4>Datos a actualizar:</h4>
+                                            </div>
+                                            <div></div>
+                                            <div class="hidden">
+                                                <input id="inputIdActualizar" type="text" required readonly
+                                                    class="font-light w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-white dark:border-gray-200 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+                                                    placeholder="número turno" aria-label="numero turno" aria />
+                                            </div>
+                                            <div>
+                                                <label for="inputFechaRegistroActualizar"
+                                                    class="text-sm font-normal leading-6 text-gray-700">
+                                                    Modificar fecha turno
+                                                </label>
+                                                <input id="inputFechaRegistroActualizar" type="date" required
+                                                    class="block font-light w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-white dark:border-gray-200 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+                                                    placeholder="date" aria-label="date" aria />
+                                            </div>
+                                            <div>
+                                                <label for="inputHoraActualizar"
+                                                    class="text-sm font-normal leading-6 text-gray-700">
+                                                    Hora
+                                                </label>
+                                                <input id="inputHoraActualizar" type="time" required
+                                                    class="block font-light w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-white dark:border-gray-200 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+                                                    placeholder="time" aria-label="time" aria />
+                                            </div>
+                                            <div>
+                                                <p class="block text-sm font-normal text-gray-700">
+                                                    Datos Paciente
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <p class="block text-sm font-normal text-gray-700">
+                                                    Datos Odontologo
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <label for="idPacienteActualizar"
+                                                    class="text-sm font-normal leading-6 text-gray-700">
+                                                    Modificar Número Paciente asignado
+                                                </label>
+                                                <input id="idPacienteActualizar" type="text" required
+                                                    class="block font-light w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-white dark:border-gray-200 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+                                                    placeholder="id paciente" aria-label="idPaciente" aria />
+                                            </div>
+                                            <div>
+                                                <label for="idOdontologoActualizar"
+                                                    class="text-sm font-normal leading-6 text-gray-700">
+                                                    Modificar Número odontologo asignado
+                                                </label>
+                                                <input id="idOdontologoActualizar" type="text" required
+                                                    class="block font-light w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-white dark:border-gray-200 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+                                                    placeholder="id odontologo" aria-label="idOdontologo" aria />
+                                            </div>
+                                            <div>
+                                                <input id="nombrePacienteActualizar" type="text" required readonly
+                                                    class="block font-light w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-white dark:border-gray-200 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+                                                    placeholder="nombre paciente" aria-label="nombre" aria />
+                                            </div>
+                                            <div>
+                                                <input id="nombreOdontologoActualizar" type="text" required readonly
+                                                    class="block font-light w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-white dark:border-gray-200 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+                                                    placeholder="nombre odontologo" aria-label="nombre" aria />
+                                            </div>
+                                            <div>
+                                                <input id="apellidoPacienteActualizar" type="text" required readonly
+                                                    class="block font-light w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-white dark:border-gray-200 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+                                                    placeholder="apellido paciente" aria-label="apellido" aria />
+                                            </div>
+                                            <div>
+                                                <input id="apellidoOdontologoActualizar" type="text" required readonly
+                                                    class="block font-light w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-white dark:border-gray-200 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+                                                    placeholder="apellido odontologo" aria-label="apellido" aria />
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer flex justify-center mt-6">
+                                            <button type="button" data-bs-dismiss="modal" aria-label="cancelar" aria
+                                                class="btn text-sm font-normal px-8 py-2.5 leading-5 rounded-md bg-white border-gray-800 text-gray-900 hover:bg-white hover:border-gray-800 hover:underline">
+                                                Cancelar
+                                            </button>
+
+                                            <button type="button" id="botonActualizarTurno"
+                                                aria-label="actualizar paciente" aria
+                                                class="btn text-sm font-normal px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-800 rounded-md hover:outline-none hover:bg-gray-800 hover:underline">
+                                                Actualizar Turno
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Modal Buscar-->
+                <section>
+                    <div class="modal fade" id="buscarTurno" tabindex="-1" aria-labelledby="buscarTurno"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header flex flex-row items-center justify-between">
+                                    <h1 class="modal-title fs-5" id="buscarTurnoLabel">
+                                        Buscar turno
+                                    </h1>
+                                    <button type="button" class="btn-close flex items-center text-gray-900"
+                                        data-bs-dismiss="modal" aria-label="Close">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2 items-end">
+                                        <div>
+                                            <label class="text-rose-600 text-sm" for="odontologoIdMatricula">Digita el
+                                                número del turno:</label>
+                                            <input type="text" id="buscarTurnoId" name="odontologoIdMatricula"
+                                                class="block font-light w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-white dark:border-gray-200 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+                                                placeholder="número turno" aria-label="id" aria />
+                                        </div>
+                                        <div>
+                                            <button id="buscarTurnoIdButton" aria-label="buscar odontologo id" aria
+                                                class="block font-normal w-full px-4 py-2 mt-2 text-gray-700 transition-colors duration-300 transform bg-gray-200 border rounded-md hover:underline focus:outline-none">
+                                                Buscar
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <form class="border-t border-gray-200 mt-4">
+                                        <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2" id="campos-turnosId">
+                                            <div>
+                                                <h4>Resultado de busqueda:</h4>
+                                            </div>
+                                            <div></div>
+                                            <div class="hidden">
+                                                <input id="inputIdBuscar" type="text" required readonly
+                                                    class="block font-light w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-white dark:border-gray-200 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+                                                    placeholder="número Turno" aria-label="id paciente" aria />
+                                            </div>
+                                            <div>
+                                                <input id="inputPacienteBuscar" type="text" required readonly
+                                                    class="block font-light w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-white dark:border-gray-200 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+                                                    placeholder="datos Paciente" aria-label="datos paciente" aria />
+                                            </div>
+                                            <div>
+                                                <input id="inputOdontologoBuscar" type="text" required readonly
+                                                    class="block font-light w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-white dark:border-gray-200 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+                                                    placeholder="datos Odontologo" aria-label="datos odontologo" aria />
+                                            </div>
+                                            <div>
+                                                <input id="inputFechaBuscar" type="text" required readonly
+                                                    class="block font-light w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-white dark:border-gray-200 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+                                                    placeholder="fecha turno" aria-label="fecha" aria />
+                                            </div>
+                                            <div>
+                                                <input id="inputHoraBuscar" type="text" required readonly
+                                                    class="block font-light w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-white dark:border-gray-200 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+                                                    placeholder="Hora turno" aria-label="hora" aria />
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer flex justify-center mt-6">
+                                            <button type="button" data-bs-dismiss="modal" aria-label="cancelar" aria
+                                                class="btn text-sm font-normal px-8 py-2.5 leading-5 rounded-md bg-white border-gray-800 text-gray-900 hover:bg-white hover:border-gray-800 hover:underline">
+                                                Cancelar
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Lista pacientes-->
+                <article class="rounded-lg border border-gray-20 overflow-hidden">
+                    <ul class="min-w-sm md:min-w-md w-full overflow-x-scroll overflow-y-scroll h-96">
+                        <li class="p-4 bg-gray-800 rounded-t-lg">
+                            <div>
+                            </div>
+                        </li>
+                        <li>
+                            <ul id="campos-turnosEliminar">
+                            </ul>
+                        </li>
+                    </ul>
+                </article>
+            </article>
+        </section>
+    </main>
+
+    <script src="./scripts/turnos/crearTurno.js"></script>
+    <script src="./scripts/turnos/actualizarTurno.js"></script>
+    <script src="./scripts/turnos/eliminarTurno.js"></script>
+    <script src="./scripts/turnos/buscarTurno.js"></script>
+    <script src="./scripts/turnos/turnosGetAll.js"></script>
+</body>
+
+</html>

@@ -2,10 +2,11 @@
 document.addEventListener('DOMContentLoaded', function () {
   // URL base para las solicitudes al servidor
   const urlBase = 'http://localhost:8080/turnos/';
+  const botonActualizarTurno = document.getElementById('botonActualizarTurno');
 
   // Elementos del DOM
-  const buscarButton = document.getElementById('buscarTurno');
-  const turnoIdInput = document.getElementById('turnoId');
+  const buscarButton = document.getElementById('buscarTurnoActualizar');
+  const turnoIdInput = document.getElementById('turnoIdActualizar');
   const formulario = document.getElementById('actualizarTurnoForm');
 
   // Agregar un evento al botón de búsqueda
@@ -13,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Obtiene el ID del turno ingresado por el usuario
     const id = turnoIdInput.value;
     if (!id) {
-      mostrarError('Por favor, ingresa un Núemero de turno válido.');
+      mostrarError('Por favor, ingresa un número de turno válido.');
       return;
     }
     // Construye la URL para consultar un turno por su ID y realiza la solicitud
@@ -30,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // Agregar un evento al envío del formulario de actualización
-  formulario.addEventListener('submit', async function (event) {
+  botonActualizarTurno.addEventListener('click', async function (event) {
     event.preventDefault();
 
     // Obtiene el ID del turno y los datos del formulario
@@ -77,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
         throw new Error(`Error de HTTP: ${response.status}`);
       }
       if (response.status === 204) {
-        mostrarError('No se encontraron resultados para el ID proporcionado.');
+        mostrarError('No se encontraron resultados para el número proporcionado.');
         return null;
       }
       // Parsea la respuesta como JSON y la devuelve
@@ -97,17 +98,18 @@ document.addEventListener('DOMContentLoaded', function () {
       paciente: { id: idP, nombre: nombreP, apellido: apellidoP },
       odontologo: { id: idO, nombre: nombreO, apellido: apellidoO },
       fechaTurno,
+      horaTurno
     } = turno;
 
-    const inputId = document.getElementById('inputId');
-    const idPaciente = document.getElementById('idPaciente');
-    const nombrePaciente = document.getElementById('nombrePaciente');
-    const apellidoPaciente = document.getElementById('apellidoPaciente');
-    const idOdontologo = document.getElementById('idOdontologo');
-    const nombreOdontologo = document.getElementById('nombreOdontologo');
-    const apellidoOdontologo = document.getElementById('apellidoOdontologo');
-    const inputFechaRegistro = document.getElementById('inputFechaRegistro');
-    const horaTurno = document.getElementById('inputHora');
+    const inputId = document.getElementById('inputIdActualizar');
+    const idPaciente = document.getElementById('idPacienteActualizar');
+    const nombrePaciente = document.getElementById('nombrePacienteActualizar');
+    const apellidoPaciente = document.getElementById('apellidoPacienteActualizar');
+    const idOdontologo = document.getElementById('idOdontologoActualizar');
+    const nombreOdontologo = document.getElementById('nombreOdontologoActualizar');
+    const apellidoOdontologo = document.getElementById('apellidoOdontologoActualizar');
+    const inputFechaRegistro = document.getElementById('inputFechaRegistroActualizar');
+    const inputhoraTurno = document.getElementById('inputHoraActualizar');
 
     // Asigna los valores del turno a los campos del formulario
     inputId.value = id;
@@ -118,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
     nombreOdontologo.value = nombreO;
     apellidoOdontologo.value = apellidoO;
     inputFechaRegistro.value = fechaTurno;
-    horaTurno.value = horaTurno;
+    inputhoraTurno.value = horaTurno;
   }
 
   // Función para mostrar un mensaje de error
@@ -133,15 +135,15 @@ document.addEventListener('DOMContentLoaded', function () {
   // Función para obtener los datos del formulario
   function obtenerDatosDelFormulario() {
     // Obtiene los valores de los campos del formulario
-    const inputId = document.getElementById('inputId').value;
-    const idPaciente = document.getElementById('idPaciente').value;
-    const nombrePaciente = document.getElementById('nombrePaciente').value;
-    const apellidoPaciente = document.getElementById('nombrePaciente').value;
-    const idOdontologo = document.getElementById('idOdontologo').value;
-    const nombreOdontologo = document.getElementById('nombreOdontologo').value;
-    const apellidoOdontologo = document.getElementById('apellidoOdontologo').value;
-    const inputFechaRegistro = document.getElementById('inputFechaRegistro').value;
-    const horaTurno = document.getElementById('inputHora').value;
+    const inputId = document.getElementById('inputIdActualizar').value;
+    const idPaciente = document.getElementById('idPacienteActualizar').value;
+    const nombrePaciente = document.getElementById('nombrePacienteActualizar').value;
+    const apellidoPaciente = document.getElementById('apellidoPacienteActualizar').value;
+    const idOdontologo = document.getElementById('idOdontologoActualizar').value;
+    const nombreOdontologo = document.getElementById('nombreOdontologoActualizar').value;
+    const apellidoOdontologo = document.getElementById('apellidoOdontologoActualizar').value;
+    const inputFechaRegistro = document.getElementById('inputFechaRegistroActualizar').value;
+    const horaTurno = document.getElementById('inputHoraActualizar').value;
 
     // Retorna un objeto con los datos del formulario
     return {

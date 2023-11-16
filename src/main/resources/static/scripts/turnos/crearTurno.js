@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const formulario = document.getElementById('crearTurnoForm'); // Agrega la referencia al formulario
-
+    const botonCrearTurno = document.getElementById('botonCrearTurno');
     /*
     const urlObtenerOdontologos = 'http://localhost:8080/odontologos/getAll';
     const selectOdontologos = document.getElementById('odontologos');
@@ -56,15 +56,15 @@ document.addEventListener('DOMContentLoaded', function () {
     */
 
     // Evento 'submit' del formulario
-    formulario.addEventListener('submit', async function (event) {
+    botonCrearTurno.addEventListener('click', async function (event) {
         event.preventDefault();
 
         // Obtener los valores del formulario
         //const selectedOdontologoId = selectOdontologos.value;
-        const idPaciente = document.getElementById('idPaciente').value;
-        const idOdontologo = document.getElementById('idOdontologo').value;
-        const fechaTurno = document.getElementById('inputFechaRegistro').value;
-        const horaTurno = document.getElementById('inputHora').value;
+        const idPaciente = document.getElementById('idPacienteCrear').value;
+        const idOdontologo = document.getElementById('idOdontologoCrear').value;
+        const fechaTurno = document.getElementById('inputFechaCrear').value;
+        const horaTurno = document.getElementById('inputHoraCrear').value;
 
         // Crear el objeto turno
         const nuevoTurno = {

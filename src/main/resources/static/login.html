@@ -1,83 +1,80 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Clinica Odontologica Piñeros Garcia</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Backend java spring boot | Proyecto con fines didácticos |" />
+  <meta name="keywords" content="Proyecto, didácticos" />
+  <title>Clinica Odontologica</title>
   <link rel="icon" type="image/x-icon" href="./assets/Diente.png" />
-  <meta name="description" content="Digital House Backend | Proyecto integrador |" />
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-  integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-  crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- ---------------------- logica aplicada en login ----------------------- -->
-  <script src="./scripts/utils.js"></script>
-  <script src="./scripts/login.js"></script>
-
 </head>
 
-<body class="h-screen">
-
+<body class="bg-gray-100 h-screen">
   <!-- Formulario Login-->
-  <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-    <!-- Titulo Login-->
-    <div class="sm:mx-auto sm:w-full sm:max-w-sm text-center">
-      <a href="index.html">
-        <i class="fa-solid fa fa-tooth mx-auto w-auto text-5xl"></i>
-      </a>
-      <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-        Iniciar sesión
-      </h2>
-    </div>
-    <!-- Form Login-->
-    <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-      <form class="space-y-6" action="#" method="POST">
-        <div>
-          <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
-          <div class="mt-2">
-            <input id="inputEmail" name="email" type="email" autocomplete="email" required
-              class="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
-          </div>
+  <main class="flex h-screen flex-col justify-center px-6 m-12 lg:px-8 pb-20">
+    <section class="w-full max-w-sm mx-auto overflow-hidden bg-white shadow rounded-lg shadow-md dark:bg-white">
+      <article class="px-6 py-4">
+        <div class="flex justify-center mx-auto">
+          <img class="h-[24vh]" src="./assets/undraw_secure_server_re_8wsq.svg" alt="img-login">
         </div>
-
-        <div>
-          <div class="flex items-center justify-between">
-            <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Contraseña</label>
+        <h3 class="mt-3 text-xl font-medium text-center text-gray-600 dark:text-gray-700">Iniciar Sesión</h3>
+        <form id="loginForm" action="http://localhost:8080/authenticate/"
+        method="POST">
+          <div class="w-full mt-4">
+            <input id="inputUsername"
+              class="block font-light w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-white dark:border-gray-200 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+              type="email" placeholder="correo" aria-label="correo" aria />
           </div>
-          <div class="mt-2">
-            <input id="inputPassword" name="password" type="password" autocomplete="current-password" required
-              class="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+
+          <div class="w-full mt-4">
+            <input id="inputPassword"
+              class="block font-light w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-white dark:border-gray-200 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+              type="password" placeholder="contraseña" aria-label="contraseña" />
           </div>
-        </div>
 
-        <div>
-          <button type="submit"
-            class="flex w-full justify-center rounded-md bg-[#FFD0D0] px-3 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm hover:bg-[#3AA6B9] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-            Iniciar Sesión
-          </button>
-        </div>
-      </form>
+          <div class="flex items-center justify-center mt-4">
+            <button type="submit"
+              class="px-6 py-2 text-sm font-normal tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:underline">
+              Iniciar sesión
+            </button>
+          </div>
+        </form>
+      </article>
 
-      <p class="mt-10 text-center text-sm text-gray-500">
-        ¿No tienes una cuenta?
-        <a href="registroPaciente.html" class="font-semibold leading-6 text-[#3AA6B9]">Regístrate aquí como Paciente</a>
-        <a href="registroOdontologo.html" class="font-semibold leading-6 text-[#3AA6B9]">Regístrate aquí como Odontologo</a>
-      </p>
-    </div>
-  </div>
+      <article class="flex font-normal items-center justify-center py-4 text-center bg-white">
+        <span class="text-sm text-gray-600">No tienes una cuenta </span>
+
+        <a href="signup.html" target="_blank"
+          class="mx-2 text-sm font-semibold text-gray-800 hover:underline">Registrate
+          aquí</a>
+      </article>
+    </section>
+  </main>
 
   <!-- Footer-->
-  <footer
-    class="fixed bottom-0 left-0 z-20 w-full p-2 bg-[#ffd0d0] border-t border-gray-200 shadow md:flex md:items-center md:justify-center md:p-2 dark:border-gray-600">
-    <span class="flex gap-1 items-center text-sm text-black sm:text-center dark:text-black">© 2023 <a href="#"
-        class="hover:underline">Clinica Odontologica Piñeros Garcia</a><i class="fa-solid fa fa-tooth"
-        style="font-size: large;"></i>
-    </span>
+  <footer class="py-8 bg-black fixed inset-x-0 bottom-0 z-50">
+    <section class="container mx-auto grid gap-6 px-4 md:grid-cols-3 md:justify-items-center">
+      <article
+        class="z-10 flex flex-wrap items-center justify-center gap-x-1 gap-y-3 sm:gap-x-2 md:col-span-3 lg:justify-start">
+        <div class="flex items-center gap-x-1 text-xs sm:text-base"><span class="text-slate-400">Made with</span><svg
+            data-testid="Icon" class="fill-current stroke-none h-4 w-4 text-red-500" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg" stroke-width="0" focusable="false" aria-hidden="true">
+            <path fill-rule="evenodd" clip-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"
+              d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z">
+            </path>
+          </svg><span class="text-slate-400">by </span><a
+            class="font-normal text-slate-200 underline decoration-dashed decoration-0 underline-offset-4 transition-colors hover:text-gray-200"
+            target="_blank" href="https://www.linkedin.com/in/rosa-pineros/">@rosa</a><span
+            class="text-slate-400">and</span><a
+            class="font-normal text-slate-200 underline decoration-dashed decoration-0 underline-offset-4 transition-colors hover:text-gray-200"
+            target="_blank" href="#">@wendy</a></div>
+      </article>
+    </section>
   </footer>
 </body>
 

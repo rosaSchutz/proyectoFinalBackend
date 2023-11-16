@@ -16,33 +16,13 @@ public class Domicilio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name="calle_domicilio")
-    private String calle;
-
-    @Column(name="numero_domicilio")
-    private String numero;
-
-    @Column(name="localidad_domicilio")
-    private String localidad;
-
-    @Column(name="provincia_domicilio")
-    private String provincia;
-
+    @Column(name="domicilio")
+    private String domicilio;
     public Domicilio() {
     }
 
-    public Domicilio(String calle, String numero, String localidad, String provincia) {
-        this.calle = calle;
-        this.numero = numero;
-        this.localidad = localidad;
-        this.provincia = provincia;
-    }
-
-    public Domicilio(Integer id, String calle, String numero, String localidad, String provincia) {
+    public Domicilio(Integer id, String domicilio) {
         this.id = id;
-        this.calle = calle;
-        this.numero = numero;
-        this.localidad = localidad;
-        this.provincia = provincia;
+        this.domicilio = domicilio;
     }
 }

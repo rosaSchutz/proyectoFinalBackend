@@ -51,10 +51,7 @@ class TurnoServiceTest {
         pacienteDTO.setFecha_registro(LocalDate.parse("2023-09-13"));
 
         Domicilio domicilio = new Domicilio();
-        domicilio.setCalle("Av Santa fe");
-        domicilio.setNumero("444");
-        domicilio.setLocalidad("CABA");
-        domicilio.setProvincia("Buenos Aires");
+        domicilio.setDomicilio("Av Santa fe");
         pacienteDTO.setDomicilio(domicilio);
         pacienteService.createPaciente(pacienteDTO);
 
@@ -77,8 +74,8 @@ class TurnoServiceTest {
         assertNotNull(turnoService.readTurno(1));
     }
 
-     @Test
-     void getAll() {
+    @Test
+    void getAll() {
         Set<TurnoDTO> turnoDTO = turnoService.getAll();
         assertFalse(turnoDTO.isEmpty());
     }

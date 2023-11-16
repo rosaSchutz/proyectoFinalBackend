@@ -30,6 +30,7 @@ async function consultarTurno(url) {
   }
 }
 
+/*
 // Función para renderizar un turno en pantalla
 function renderizarTurno(turno) {
   // Acceder a los campos del odontologo
@@ -40,17 +41,58 @@ function renderizarTurno(turno) {
   const paciente = turno.paciente;
   const nombrePaciente = paciente.nombre;
   const apellidoPaciente = paciente.apellido;
-  const template = `
-        <tr>
-          <td>${turno.id}</td>
-          <td>${nombrePaciente} ${apellidoPaciente}</td>
-          <td>${nombreOdontologo} ${apellidoOdontologo}</td>
-          <td>${turno.fechaTurno}</td>
-          <td>${turno.horaTurno}</td>
-        </tr>
-      `;
-  const tbody = document.getElementById('campos-turnos');
+  
+    const template = `
+    <tr>
+    <td
+        class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap text-center"
+        id="id-paciente">
+        <h2 class="font-normal text-gray-800 dark:text-gray-700">
+        ${turno.id}</h2>
+    </td>
+    <td
+        class="px-12 py-4 text-sm font-normal text-gray-700 whitespace-nowrap text-left">
+        ${nombrePaciente} ${apellidoPaciente}
+    </td>
+    <td
+        class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap text-left">
+        ${nombreOdontologo} ${apellidoOdontologo}
+    </td>
+    <td
+        class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap text-left">
+        ${turno.fechaTurno}</td>
+    <td
+        class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap text-left">
+        ${turno.horaTurno}
+    </td>
+  </tr>
+  `;
+  
+  const tbody = document.getElementById('campos-turnosId');
   tbody.innerHTML = template;
+}
+*/
+
+function renderizarTurno(turno) {
+  const {
+    id,
+    paciente: { id: idPaciente, nombre: nombrePaciente, apellido: apellidoPaciente },
+    odontologo: { id: idOdontologo, nombre: nombreOdontologo, apellido: apellidoOdontologo },
+    fechaTurno,
+    horaTurno,
+  } = turno;
+
+  const idturno = document.getElementById('inputIdBuscar');
+  const datosPaciente = document.getElementById('inputPacienteBuscar');
+  const datosOdontologo = document.getElementById('inputOdontologoBuscar');
+  const inputFechaTurno = document.getElementById('inputFechaBuscar');
+  const inputHoraTurno = document.getElementById('inputHoraBuscar');
+
+  idturno.value = id;
+  datosPaciente.value = `${idPaciente} ${nombrePaciente} ${apellidoPaciente}`;
+  datosOdontologo.value = `${idOdontologo} ${nombreOdontologo} ${apellidoOdontologo}`;
+  inputFechaTurno.value = fechaTurno;
+  inputHoraTurno.value = horaTurno;
 }
 
 // Función para mostrar un mensaje de error
@@ -65,8 +107,8 @@ function mostrarError(mensaje) {
 // Manejo del evento de clic en el botón "Buscar"
 document.addEventListener('DOMContentLoaded', function () {
   const urlBase = 'http://localhost:8080/turnos/';
-  const buscarButton = document.getElementById('buscarTurno');
-  const turnoIdInput = document.getElementById('turnoId');
+  const buscarButton = document.getElementById('buscarTurnoIdButton');
+  const turnoIdInput = document.getElementById('buscarTurnoId');
 
   buscarButton.addEventListener('click', function () {
     const id = turnoIdInput.value;

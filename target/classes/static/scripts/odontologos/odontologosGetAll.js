@@ -1,6 +1,7 @@
+/*
 document.addEventListener('DOMContentLoaded', function () {
   const url = 'http://localhost:8080/odontologos/getAll'; //odontologos
-  const tbody = document.getElementById('campos-odontologos');
+  const tbody = document.getElementById('campos-odontologosGetAll');
 
   // Configuración para las solicitudes fetch
   const settings = {
@@ -30,28 +31,39 @@ document.addEventListener('DOMContentLoaded', function () {
   function renderizarOdontologos(odontologos) {
     let template = '';
     odontologos.forEach(odontologo => {  //tener presente que odontologos no tiene domicilio, mirar el DTO
-      
+
       template += `
-        <tr>
-        <td>${odontologo.id}</td>
-          <td>${odontologo.nombre}</td> 
-          <td>${odontologo.apellido}</td>
-          <td>${odontologo.matricula}</td>
-        </tr>
-      `;
+      <tr>
+        <td
+            class="px-12 py-4 text-sm font-normal text-gray-700 whitespace-nowrap text-center">
+            ${odontologo.id}
+        </td>
+        <td
+            class="px-12 py-4 text-sm font-normal text-gray-700 whitespace-nowrap text-center">
+            ${odontologo.nombre}
+        </td>
+        <td
+            class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap text-center">
+            ${odontologo.apellido}</td>
+        <td
+            class="px-4 py-4 text-sm text-gray-500 dark:text-gray-700 whitespace-nowrap text-center">
+            ${odontologo.matricula}</td>
+      </tr>
+    `;
     });
     tbody.innerHTML = template;
   }
 
-// Función para mostrar un mensaje de error
+  // Función para mostrar un mensaje de error
   function mostrarError(mensaje) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: mensaje,
-      });
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: mensaje,
+    });
   }
 
   // Evento de carga para consultar odontologos
   consultarOdontologos(url, settings);
 });
+*/

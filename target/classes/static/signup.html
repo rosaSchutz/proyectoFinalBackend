@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Backend java spring boot | Proyecto con fines didácticos |" />
+  <meta name="keywords" content="Proyecto, didácticos" />
+  <title>Clinica Odontologica</title>
+  <link rel="icon" type="image/x-icon" href="./assets/Diente.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+  <main class="flex flex-col justify-center px-6 my-12 lg:px-8 pb-20">
+    <section
+      class="w-full max-w-sm md:max-w-lg mx-auto overflow-hidden bg-white shadow rounded-lg shadow-md dark:bg-white">
+      <section class="px-6 py-4 text-center">
+        <h3 class="mt-3 text-xl font-medium text-center text-gray-900 dark:text-gray-900">Crear cuenta</h3>
+        <p class="mt-2 font-light leading-8 text-gray-500 hidden md:visible">Completa el formulario de registro para
+          acceder a nuestra
+          herramienta de reserva de turnos.</p>
+        <!-- form Registro-->
+        <form id="signupForm" action="http://localhost:8080/usuarios/add" method="POST" class="mx-auto mt-2 max-w-xl">
+          <article class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+            <div class="sm:col-span-2">
+              <div class="mt-2.5">
+                <input type="text" name="inputEmail" id="inputEmail" autocomplete="email" required
+                  class="block font-light w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-white dark:border-gray-200 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+                  placeholder="email" aria-label="email" aria>
+              </div>
+            </div>
+            <div class="sm:col-span-2">
+              <div class="mt-2.5">
+                <input type="text" name="inputPassword" id="inputPassword" autocomplete="current-password" required
+                  class="block font-light w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-white dark:border-gray-200 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+                  placeholder="contraseña" aria-label="contraseña" aria>
+              </div>
+            </div>
+            <div class="sm:col-span-2">
+              <div class="mt-2.5">
+                <input type="text" name="inputRol" id="inputRol" required
+                  class="block font-light w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg dark:bg-white dark:border-gray-200 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300"
+                  placeholder="rol" aria-label="rol" aria>
+              </div>
+            </div>
+          </article>
+          <article class="flex items-center justify-center mt-4">
+            <button type="submit"
+              class="px-6 py-2 text-sm font-normal tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:underline ">
+              Crear Cuenta
+            </button>
+          </article>
+          <article class="flex flex-col md:flex-row font-normal items-center justify-center py-8 text-center bg-white">
+            <span class="text-sm text-gray-600 dark:text-gray-700">¿Ya tienes una cuenta? </span>
+
+            <a href="login.html" target="_blank"
+              class="mx-2 text-sm font-semibold text-gray-800 hover:underline">
+              Ingresa aquí
+            </a>
+          </article>
+        </form>
+      </section>
+    </section>
+  </main>
+  <!-- Footer-->
+  <footer class="py-8 bg-black fixed inset-x-0 bottom-0 z-50">
+    <section class="container mx-auto grid gap-6 px-4 md:grid-cols-3 md:justify-items-center">
+      <article
+        class="z-10 flex flex-wrap items-center justify-center gap-x-1 gap-y-3 sm:gap-x-2 md:col-span-3 lg:justify-start">
+        <div class="flex items-center gap-x-1 text-xs sm:text-base"><span class="text-slate-400">Made with</span><svg
+            data-testid="Icon" class="fill-current stroke-none h-4 w-4 text-red-500" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg" stroke-width="0" focusable="false" aria-hidden="true">
+            <path fill-rule="evenodd" clip-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"
+              d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z">
+            </path>
+          </svg><span class="text-slate-400">by </span><a
+            class="font-normal text-slate-200 underline decoration-dashed decoration-0 underline-offset-4 transition-colors hover:text-gray-200"
+            target="_blank" href="https://www.linkedin.com/in/rosa-pineros/">@rosa</a><span
+            class="text-slate-400">and</span><a
+            class="font-normal text-slate-200 underline decoration-dashed decoration-0 underline-offset-4 transition-colors hover:text-gray-200"
+            target="_blank" href="#">@wendy</a></div>
+      </article>
+    </section>
+  </footer>
+</body>
+
+</html>

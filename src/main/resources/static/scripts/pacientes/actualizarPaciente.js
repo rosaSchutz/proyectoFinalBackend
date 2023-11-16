@@ -2,22 +2,23 @@
 document.addEventListener('DOMContentLoaded', function () {
   // URL base para las solicitudes al servidor
   const urlBase = 'http://localhost:8080/pacientes/';
+  const botonActualizarPaciente = document.getElementById('botonActualizarPaciente');
 
   // Elementos del DOM
-  const buscarButton = document.getElementById('buscarPaciente');
-  const pacienteIdInput = document.getElementById('pacienteId');
+  const buscarButton = document.getElementById('buscarPacienteActualizar');
+  const pacienteIdInput = document.getElementById('pacienteIdActualizar');
   const formulario = document.getElementById('actualizarPacienteForm');
 
   // Agregar un evento al botón de búsqueda
   buscarButton.addEventListener('click', async function () {
     // Obtiene el ID del paciente ingresado por el usuario
-    const id = pacienteIdInput.value;
-    if (!id) {
+    const dni = pacienteIdInput.value;
+    if (!dni) {
       mostrarError('Por favor, ingresa un ID de paciente válido.');
       return;
     }
     // Construye la URL para consultar un paciente por su ID y realiza la solicitud
-    const url = `${urlBase}${id}`;
+    const url = `${urlBase}buscarDni/${dni}`;
     try {
       // Consulta al paciente y espera la respuesta
       const paciente = await consultarPaciente(url);
@@ -30,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // Agregar un evento al envío del formulario de actualización
-  formulario.addEventListener('submit', async function (event) {
+  botonActualizarPaciente.addEventListener('click', async function (event) {
     event.preventDefault();
 
     // Obtiene el ID del paciente y los datos del formulario
@@ -55,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
     try {
       // Actualiza al paciente y espera la respuesta
       await actualizarPaciente(url, settings);
+      formulario.reset();
     } catch (error) {
       mostrarError('Error al actualizar paciente.');
     }
@@ -97,18 +99,17 @@ document.addEventListener('DOMContentLoaded', function () {
       apellido,
       dni,
       fecha_registro,
-      domicilio: { calle, numero, localidad, provincia },
+      domicilio: {
+        domicilio,
+      },
     } = paciente;
 
-    const inputId = document.getElementById('inputId');
-    const inputNombre = document.getElementById('inputNombre');
-    const inputApellido = document.getElementById('inputApellido');
-    const inputDni = document.getElementById('inputDni');
-    const inputFechaRegistro = document.getElementById('inputFechaRegistro');
-    const calleDomicilio = document.getElementById('calleDomicilio');
-    const numeroDomicilio = document.getElementById('numeroDomicilio');
-    const localidadDomicilio = document.getElementById('localidadDomicilio');
-    const provinciaDomicilio = document.getElementById('provinciaDomicilio');
+    const inputId = document.getElementById('inputIdActualizar');
+    const inputNombre = document.getElementById('inputNombreActualizar');
+    const inputApellido = document.getElementById('inputApellidoActualizar');
+    const inputDni = document.getElementById('inputDniActualizar');
+    const inputFechaRegistro = document.getElementById('inputFechaRegistroActualizar');
+    const inputDireccion = document.getElementById('inputDireccionActualizar');
     //const usernameInput = document.getElementById('username');
     //const passwordInput = document.getElementById('password');
 
@@ -118,10 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
     inputApellido.value = apellido;
     inputDni.value = dni;
     inputFechaRegistro.value = fecha_registro;
-    calleDomicilio.value = calle;
-    numeroDomicilio.value = numero;
-    localidadDomicilio.value = localidad;
-    provinciaDomicilio.value = provincia;
+    inputDireccion.value = domicilio;
     //usernameInput.value = username;
     //passwordInput.value = password;
   }
@@ -138,15 +136,12 @@ document.addEventListener('DOMContentLoaded', function () {
   // Función para obtener los datos del formulario
   function obtenerDatosDelFormulario() {
     // Obtiene los valores de los campos del formulario
-    const inputId = document.getElementById('inputId').value;
-    const inputNombre = document.getElementById('inputNombre').value;
-    const inputApellido = document.getElementById('inputApellido').value;
-    const inputDni = document.getElementById('inputDni').value;
-    const inputFechaRegistro = document.getElementById('inputFechaRegistro').value;
-    const calleDomicilio = document.getElementById('calleDomicilio').value;
-    const numeroDomicilio = document.getElementById('numeroDomicilio').value;
-    const localidadDomicilio = document.getElementById('localidadDomicilio').value;
-    const provinciaDomicilio = document.getElementById('provinciaDomicilio').value;
+    const inputId = document.getElementById('inputIdActualizar').value;
+    const inputNombre = document.getElementById('inputNombreActualizar').value;
+    const inputApellido = document.getElementById('inputApellidoActualizar').value;
+    const inputDni = document.getElementById('inputDniActualizar').value;
+    const inputFechaRegistro = document.getElementById('inputFechaRegistroActualizar').value;
+    const inputDireccion = document.getElementById('inputDireccionActualizar').value;
     //const usernameInput = document.getElementById('username').value;
     //const passwordInput = document.getElementById('password').value;
 
@@ -158,10 +153,7 @@ document.addEventListener('DOMContentLoaded', function () {
       dni: inputDni,
       fecha_registro: inputFechaRegistro,
       domicilio: {
-        calle: calleDomicilio,
-        numero: numeroDomicilio,
-        localidad: localidadDomicilio,
-        provincia: provinciaDomicilio,
+        domicilio: inputDireccion,
       },
       /*
       usuario: {
@@ -185,7 +177,6 @@ document.addEventListener('DOMContentLoaded', function () {
       const data = await response.json();
       console.log("Paciente actualizado exitosamente:", data);
       Swal.fire('Paciente actualizado exitosamente!', '', 'success');
-      formulario.reset();
     } catch (error) {
       console.error("Error al actualizar paciente:", error);
       throw new Error('Error al actualizar paciente.');

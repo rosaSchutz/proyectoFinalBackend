@@ -4,20 +4,21 @@ document.addEventListener('DOMContentLoaded', function () {
   const urlBase = 'http://localhost:8080/odontologos/';
 
   // Elementos del DOM
-  const buscarButton = document.getElementById('buscarOdontologos');
-  const odontologoIdInput = document.getElementById('odontologoId');
+  const buscarButton = document.getElementById('buscarOdontologoActualizar');
+  const odontologoIdInput = document.getElementById('odontologoIdActualizar');
   const formulario = document.getElementById('actualizarOdontologoForm');
+  const botonActualizarOdontologo = document.getElementById('botonActualizarOdontologo');
 
   // Agregar un evento al botón de búsqueda
   buscarButton.addEventListener('click', async function () {
     // Obtiene el ID del paciente ingresado por el usuario
-    const id = odontologoIdInput.value;
-    if (!id) {
+    const matricula = odontologoIdInput.value;
+    if (!matricula) {
       mostrarError('Por favor, ingresa un ID de odontologo válido.');
       return;
     }
     // Construye la URL para consultar un paciente por su ID y realiza la solicitud
-    const url = `${urlBase}${id}`;
+    const url = `${urlBase}buscarMatricula/${matricula}`;
     try {
       // Consulta al paciente y espera la respuesta
       const odontologo = await consultarOdontologo(url);
@@ -30,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // Agregar un evento al envío del formulario de actualización
-  formulario.addEventListener('submit', async function (event) {
+  botonActualizarOdontologo.addEventListener('click', async function (event) {
     event.preventDefault();
 
     // Obtiene el ID del paciente y los datos del formulario
@@ -55,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
     try {
       // Actualiza al paciente y espera la respuesta
       await actualizarOdontologo(url, settings);
+      formulario.reset();
     } catch (error) {
       mostrarError('Error al actualizar odontologo.');
     }
@@ -101,12 +103,10 @@ document.addEventListener('DOMContentLoaded', function () {
     } = odontologo;
 
 
-
-
-    const inputId = document.getElementById('inputId');
-    const inputNombre = document.getElementById('inputNombre');
-    const inputApellido = document.getElementById('inputApellido');
-    const inputMatricula = document.getElementById('inputMatricula');
+    const inputId = document.getElementById('inputIdActualizar');
+    const inputNombre = document.getElementById('inputNombreActualizar');
+    const inputApellido = document.getElementById('inputApellidoActualizar');
+    const inputMatricula = document.getElementById('inputMatriculaActualizar');
     //const usernameInput = document.getElementById('username');
     //const passwordInput = document.getElementById('password');
 
@@ -131,10 +131,10 @@ document.addEventListener('DOMContentLoaded', function () {
   // Función para obtener los datos del formulario
   function obtenerDatosDelFormulario() {
     // Obtiene los valores de los campos del formulario
-    const inputId = document.getElementById('inputId').value;
-    const inputNombre = document.getElementById('inputNombre').value;
-    const inputApellido = document.getElementById('inputApellido').value;
-    const inputMatricula = document.getElementById('inputMatricula').value;
+    const inputId = document.getElementById('inputIdActualizar').value;
+    const inputNombre = document.getElementById('inputNombreActualizar').value;
+    const inputApellido = document.getElementById('inputApellidoActualizar').value;
+    const inputMatricula = document.getElementById('inputMatriculaActualizar').value;
     //const usernameInput = document.getElementById('username').value;
     //const passwordInput = document.getElementById('password').value;
 
@@ -166,7 +166,6 @@ document.addEventListener('DOMContentLoaded', function () {
       const data = await response.json();
       console.log("Odontologo actualizado exitosamente:", data);
       Swal.fire('Odontologo actualizado exitosamente!', '', 'success');
-      formulario.reset();
     } catch (error) {
       console.error("Error al actualizar Odontologo:", error);
       throw new Error('Error al actualizar Odontologo.');

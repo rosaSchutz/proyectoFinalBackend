@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Backend java spring boot | Proyecto con fines didácticos |" />
+  <meta name="keywords" content="Proyecto, didácticos" />
+  <title>Clinica Odontologica</title>
+  <link rel="icon" type="image/x-icon" href="./assets/Diente.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Sweet Alert -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="absolute inset-x-0 top-0 z-50">
+    <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+      <div class="flex lg:flex-1 items-center gap-5">
+        <a href="#" class="-m-1.5 p-1.5">
+          <span class="sr-only">Clinica Odontologica</span>
+          <img class="h-8 w-auto" src="./assets/Diente.png" alt="" />
+        </a>
+        <h class="text-base font-semibold leading-6 text-gray-900">Clinica Odontologica</h1>
+      </div>
+
+      <div class="flex flex-1 justify-end">
+        <a href="login.html" class="text-sm font-semibold leading-6 text-gray-900">Iniciar Sesión <span
+            aria-hidden="true">&rarr;</span></a>
+      </div>
+    </nav>
+
+  </header>
+
+  <!-- Decoracion background-->
+  <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
+    <div
+      class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+      style="
+              clip-path: polygon(
+                74.1% 44.1%,
+                100% 61.6%,
+                97.5% 26.9%,
+                85.5% 0.1%,
+                80.7% 2%,
+                72.5% 32.5%,
+                60.2% 62.4%,
+                52.4% 68.1%,
+                47.5% 58.3%,
+                45.2% 34.5%,
+                27.5% 76.7%,
+                0.1% 64.9%,
+                17.9% 100%,
+                27.6% 76.8%,
+                76.1% 97.7%,
+                74.1% 44.1%
+              );
+            "></div>
+  </div>
+
+  <!-- Banner home - main-->
+  <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+    <div class="text-center">
+      <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+        Reserva tu turno
+      </h1>
+      <p class="mt-6 text-lg leading-8 text-gray-600">
+        Gestiona tus citas con precisión y comodidad. Nuestro Sistema de
+        Reserva de Turnos te permite controlar tus horarios de manera
+        eficiente.
+      </p>
+      <div class="mt-10 flex items-center justify-center gap-x-6">
+        <a href="signup.html" target="_blank"
+          class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Registrate</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Decoracion background-->
+  <div
+    class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+    aria-hidden="true">
+    <div
+      class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+      style="
+              clip-path: polygon(
+                74.1% 44.1%,
+                100% 61.6%,
+                97.5% 26.9%,
+                85.5% 0.1%,
+                80.7% 2%,
+                72.5% 32.5%,
+                60.2% 62.4%,
+                52.4% 68.1%,
+                47.5% 58.3%,
+                45.2% 34.5%,
+                27.5% 76.7%,
+                0.1% 64.9%,
+                17.9% 100%,
+                27.6% 76.8%,
+                76.1% 97.7%,
+                74.1% 44.1%
+              );
+            "></div>
+  </div>
+
+  <!-- Footer-->
+  <footer class="py-8 bg-black fixed inset-x-0 bottom-0 z-50">
+    <section class="container mx-auto grid gap-6 px-4 md:grid-cols-3 md:justify-items-center">
+      <article
+        class="z-10 flex flex-wrap items-center justify-center gap-x-1 gap-y-3 sm:gap-x-2 md:col-span-3 lg:justify-start">
+        <div class="flex items-center gap-x-1 text-xs sm:text-base"><span class="text-slate-400">Made with</span><svg
+            data-testid="Icon" class="fill-current stroke-none h-4 w-4 text-red-500" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg" stroke-width="0" focusable="false" aria-hidden="true">
+            <path fill-rule="evenodd" clip-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"
+              d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z">
+            </path>
+          </svg><span class="text-slate-400">by </span><a
+            class="font-normal text-slate-200 underline decoration-dashed decoration-0 underline-offset-4 transition-colors hover:text-gray-200"
+            target="_blank" href="https://www.linkedin.com/in/rosa-pineros/">@rosa</a><span
+            class="text-slate-400">and</span><a
+            class="font-normal text-slate-200 underline decoration-dashed decoration-0 underline-offset-4 transition-colors hover:text-gray-200"
+            target="_blank" href="#">@wendy</a></div>
+      </article>
+    </section>
+  </footer>
+</body>
+
+</html>
